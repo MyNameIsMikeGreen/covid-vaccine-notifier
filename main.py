@@ -32,7 +32,7 @@ def notify():
         data={"from": f"COVID Vaccine Notifier <mailgun@{MAILGUN_DOMAIN}>",
               "to": [RECIPIENT],
               "subject": f"COVID Vaccine Is Available For {TARGET_AGE} Year Olds!",
-              "text": f"MyNameIsMikeGreen's COVID vaccine notifier (https://github.com/MyNameIsMikeGreen/covid-vaccine-notifier/) has detected that the COVID vaccine is now available to those aged {TARGET_AGE} years old!\n\nBook here: {NHS_URL}"
+              "text": f"MyNameIsMikeGreen's COVID vaccine notifier has detected that the COVID vaccine is now available to those aged {TARGET_AGE} years old!\n\nBook here: {NHS_URL}\n\nProject: https://github.com/MyNameIsMikeGreen/covid-vaccine-notifier/"
               })
     if response.status_code == 200:
         print("Notification sent!")
