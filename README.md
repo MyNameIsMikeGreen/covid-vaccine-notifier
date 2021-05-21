@@ -1,6 +1,8 @@
 COVID Vaccine Notifer
 =====================
 
+![Email Example](media/emailExample.png "Email Example")
+
 * Detects the NHS's current age threshold for non-priority COVID vaccination.
 * Compares this to the user's age.
 * If the user is eligible for the vaccine according to the current rollout plan, sends a notification email.
