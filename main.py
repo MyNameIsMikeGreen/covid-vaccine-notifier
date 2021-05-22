@@ -1,3 +1,4 @@
+import logging
 import os
 import re
 
@@ -35,22 +36,26 @@ def notify():
               "text": f"MyNameIsMikeGreen's COVID vaccine notifier has detected that the COVID vaccine is now available to those aged {TARGET_AGE} years old!\n\nBook here: {NHS_URL}\n\nProject: https://github.com/MyNameIsMikeGreen/covid-vaccine-notifier/"
               })
     if response.status_code == 200:
-        print("Notification sent!")
+        logging.info("Notification sent!")
     else:
-        print(f"HTTP {response.status_code}: {response.text}")
+        logging.info(f"HTTP {response.status_code}: {response.text}")
         raise RequestFailureError("Failed to send notification")
 
 
 def main():
     current_nhs_age = find_current_nhs_age()
-    print(f"Target age set to: {TARGET_AGE}")
-    print(f"Detected current COVID vaccine age threshold as: {current_nhs_age}")
+    logging.info(f"Target age set to: {TARGET_AGE}")
+    logging.info(f"Detected current COVID vaccine age threshold as: {current_nhs_age}")
     if current_nhs_age <= TARGET_AGE:
-        print("Sending notification...")
+        logging.info("Sending notification...")
         notify()
     else:
-        print(f"Vaccine not available for {TARGET_AGE} year olds yet :(")
+        logging.info(f"Vaccine not available for {TARGET_AGE} year olds yet :(")
 
 
 if __name__ == '__main__':
+    logging.basicConfig(filename='covidVaccineNotifier.log',
+                        level=logging.INFO,
+                        format='%(asctime)s - %(message)s',
+                        datefmt='%Y-%m-%dT%H:%M:%S')
     main()
