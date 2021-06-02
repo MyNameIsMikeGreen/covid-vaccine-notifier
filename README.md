@@ -1,4 +1,4 @@
-COVID Vaccine Notifer
+COVID Vaccine Notifier
 =====================
 
 ![Email Example](media/emailExample.png "Email Example")
